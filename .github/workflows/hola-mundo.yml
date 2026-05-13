@@ -52,7 +52,16 @@ jobs:
         run: |
           echo "--- Archivos en el repositorio ---"
           ls -la
- 
+      - name: "Sobre mi"
+        run: |
+          echo "==========================================="
+          echo "  Nombre:      [Guillermo Leon Loaiza Mesa]"
+          echo "  Programa:    [Ingeniería en desarrollo de software y datos]"
+          echo "  Institucion: IU Digital de Antioquia"     
+          echo "  Fecha:       $(date)"
+          echo "  Mi primer Action funciona!"
+          echo "==========================================="
+          
       - name: "Deploy completado"
         run: |
           echo "==========================================="
