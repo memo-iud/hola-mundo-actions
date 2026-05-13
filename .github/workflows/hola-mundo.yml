@@ -1,0 +1,68 @@
+# =============================================
+# MI PRIMER GITHUB ACTION
+# =============================================
+# Este archivo le dice a GitHub:
+# "Cada vez que haga push a main, ejecuta estos pasos"
+ 
+name: "Hola Mundo"
+ 
+# --- CUANDO se ejecuta? ---
+on:
+  push:
+    branches:
+      - main
+ 
+# --- QUE hace? ---
+jobs:
+ 
+  hola-mundo:
+    name: "Saludar al mundo"
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+      url: "https://github.com/${{ github.repository }}"
+ 
+    steps:
+      - name: "Descargar mi codigo"
+        uses: actions/checkout@v4
+ 
+      - name: "Hola Mundo"
+        run: |
+          echo "==========================================="
+          echo "  HOLA MUNDO desde GitHub Actions!          "
+          echo "==========================================="
+          echo ""
+          echo "  Mi primer pipeline funciono!"
+          echo ""
+          echo "  Ambiente: development"
+          echo ""
+          echo "==========================================="
+ 
+      - name: "Informacion del deploy"
+        run: |
+          echo "--- Detalles del deploy ---"
+          echo "Repositorio: ${{ github.repository }}"
+          echo "Rama:        ${{ github.ref_name }}"
+          echo "Commit:      ${{ github.sha }}"
+          echo "Autor:       ${{ github.actor }}"
+          echo "Fecha:       $(date)"
+          echo "Evento:      ${{ github.event_name }}"
+ 
+      - name: "Ver archivos del repo"
+        run: |
+          echo "--- Archivos en el repositorio ---"
+          ls -la
+ 
+      - name: "Deploy completado"
+        run: |
+          echo "==========================================="
+          echo ""
+          echo "  Deploy a DEVELOPMENT completado"
+          echo ""
+          echo "  Este mensaje lo genero GitHub Actions"
+          echo "  corriendo en una maquina virtual Ubuntu"
+          echo "  en la nube, de forma automatica."
+          echo ""
+          echo "  Felicidades!"
+          echo ""
+          echo "==========================================="
